@@ -1,0 +1,369 @@
+// user all page
+.s__typeMovie {
+    text-align: center;
+    margin-bottom: 20px;
+    p {
+        color: $primary-color;
+    }
+    h3 {
+        font-size: 2rem;
+        @media (max-width: 991px) {
+            font-size: 1.5rem;
+        }
+        @media (max-width: 767px) {
+            font-size: 1rem;
+        }
+    }
+}
+
+.s__date {
+    @include displayFlex($justify: between, $alignItem: center);
+    @media (max-width: 767px) {
+        display: block;
+    }
+    .s__rate {
+        @include displayFlex($justify: center, $alignItem: center);
+        color: $primary-color;
+        p {
+            margin-left: 5px;
+        }
+    }
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    padding: 5px 0;
+    transition: 0.5s;
+    z-index: 2;
+    &.active {
+        background-color: #111d1d;
+    }
+    .s__logo {
+        cursor: pointer;
+        @include displayFlex($justify: between, $alignItem: center);
+        img {
+            width: 150px;
+            @media (max-width: 991px) {
+                width: 100px;
+            }
+        }
+        .s__name {
+            font-size: 1.5rem;
+            @media (max-width: 991px) {
+                font-size: 1.2rem;
+            }
+        }
+    }
+    .s-nav {
+        @include displayFlex($justify: between, $alignItem: center);
+        @media (max-width: 767px) {
+            @include displayFlex($justify: center !important, $alignItem: center);
+        }
+        .s__listmenu {
+            @media (max-width: 767px) {
+                display: none;
+                position: absolute;
+                right: 0px;
+                top: 70px;
+                transition: 0.5s;
+            }
+            &.active {
+                display: block;
+            }
+            li {
+                display: inline-block;
+                margin: 0 20px;
+                font-weight: 500;
+                cursor: pointer;
+                position: relative;
+                @media (max-width: 991px) {
+                    margin: 0 5px;
+                }
+                @media (max-width: 767px) {
+                    display: block;
+                    padding: 15px 20px;
+                    margin: 5px 0;
+                    background-color: #111d1d;
+                }
+                .s__submenu ul {
+                    position: absolute;
+                    width: 200px;
+                    top: 50px;
+                    color: #fff;
+                    font-size: 10px;
+                    font-weight: 800;
+                    background-color: #111d1d;
+                    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+                    opacity: 0;
+                    padding-top: 10px;
+                    visibility: hidden;
+                    transition: 0.5s;
+                    height: 200px;
+                    overflow-y: scroll;
+                    @media (max-width: 767px) {
+                        right: 100%;
+                        top: 0px;
+                        padding-top: 0px;
+                    }
+                    li {
+                        display: block;
+                        margin-bottom: 10px;
+                        margin-left: 5px;
+                    }
+                }
+                &:hover .s__submenu ul {
+                    opacity: 1;
+                    visibility: visible;
+                    top: 45px;
+                }
+            }
+        }
+        .s__search {
+            @include displayFlex($justify: between, $alignItem: center);
+            position: relative;
+            input {
+                width: 100%;
+                padding: 5px 20px;
+                background-color: $second-color;
+                border: 2px solid $primary-color;
+                border-radius: 20px;
+                color: #fff;
+            }
+            .s__icon i {
+                position: absolute;
+                right: 30px;
+                top: 8px;
+                cursor: pointer;
+            }
+        }
+        .hiddenMenu {
+            color: $primary-color;
+            font-size: 1rem;
+            display: none;
+            cursor: pointer;
+            @media (max-width: 767px) {
+                display: block;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+.s-banner {
+    background: url(../assets/background.jpeg) center no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding-top: 200px;
+    @media (max-width: 991px) {
+        text-align: center;
+        padding-top: 150px;
+        padding-bottom: 20px;
+    }
+    @media (max-width: 767px) {
+        height: unset;
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+    .s__name {
+        color: $primary-color;
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+    .s__tittle {
+        margin: 30px 0;
+        width: 35%;
+        font-size: 3rem;
+        span {
+            color: $primary-color;
+        }
+        @media (max-width: 991px) {
+            width: 100%;
+            margin: 10px 0;
+        }
+    }
+    .s__hook {
+        @include displayFlex();
+        color: #fff;
+        display: inline-block;
+        margin-top: 40px;
+        border: 2px solid $primary-color;
+        padding: 10px 20px;
+        border-radius: 50px;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+}
+
+.s-gallery {
+    background: url(../assets/nowplaying-bg.png) center no-repeat;
+    background-size: cover;
+    padding: 50px 0;
+    .s__listMovie {
+        @include displayFlex($justify: none, $alignItem: none);
+        gap: 20px;
+        padding-bottom: 20px;
+        flex-wrap: wrap;
+        &.scroll {
+            overflow-x: scroll;
+            flex-wrap: nowrap;
+            &::-webkit-scrollbar {
+                height: 8px;
+            }
+            &::-webkit-scrollbar-track {
+                background: transparent;
+                box-shadow: 0 0 0 2px var(--primary-color);
+                border-radius: 10px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: #fff;
+                border-radius: 10px;
+                box-shadow: inset 0 1px 0 #000, inset 0 -1px 0 #000;
+            }
+            .s__item {
+                min-width: 20%;
+            }
+        }
+        .s__item {
+            width: calc(20% - 20px);
+            @media (max-width: 575px) {
+                width: calc(25% - 20px);
+            }
+            .s__thump {
+                position: relative;
+                transition: 0.5s;
+                img {
+                    border-radius: 10px;
+                }
+                &::before {
+                    content: "";
+                    position: absolute;
+                    height: 99%;
+                    width: 100%;
+                    background-color: rgb(255 255 255 / 5%);
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: 0.5s;
+                    border-radius: 10px;
+                }
+                &:hover::before {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            h2 {
+                font-size: 1rem;
+                @media (max-width: 767px) {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}
+//change colore background
+#s-bgupcoming {
+    background: url(../assets/upcoming-bg.jpeg) center no-repeat;
+    background-size: cover;
+}
+#s-bgupcoming {
+    background: url(../assets/top-rated-bg.jpeg) center no-repeat;
+    background-size: cover;
+}
+#s-bgWorld {
+    background: url(../assets/top-rated-bg.jpeg) center no-repeat;
+    background-size: cover;
+}
+footer {
+    .s-footerBox {
+        background: url(../assets/backgroundfooter.jpeg) center no-repeat;
+        background-size: cover;
+        padding: 35px 0;
+        .s__textBox {
+            @include displayFlex($justify: between, $alignItem: center);
+            @media (max-width: 767px) {
+                display: block;
+                text-align: center;
+            }
+            .s__right {
+                @include displayFlex($justify: between, $alignItem: center);
+                position: relative;
+                width: 50%;
+                @media (max-width: 767px) {
+                    width: 100%;
+                    margin-top: 10px;
+                }
+                input {
+                    width: 100%;
+                    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+                    border: none;
+                    outline: none;
+                    padding: 12px;
+                }
+                button {
+                    background-color: black;
+                    color: $primary-color;
+                    padding: 8px;
+                    position: absolute;
+                    top: 50%;
+                    right: 6px;
+                    transform: translateY(-50%);
+                    border: none;
+                    font-weight: 700;
+                    font-size: 12px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .s-footerlast {
+        background: url(../assets/upcoming-bg.jpeg) center no-repeat;
+        background-size: cover;
+        padding: 35px 0;
+        .s__top {
+            margin-bottom: 80px;
+            @include displayFlex($justify: between, $alignItem: center);
+            @media (max-width: 767px) {
+                display: block;
+                margin-bottom: 10px;
+            }
+            .s__logo {
+                @include displayFlex($justify: between, $alignItem: center);
+                @media (max-width: 767px) {
+                    display: block;
+                }
+                img {
+                    width: 60px;
+                    margin: 0 auto;
+                }
+                .s__name {
+                    font-weight: 500;
+                }
+            }
+            .s__list {
+                .s__listmenu ul {
+                    @include displayFlex($justify: between, $alignItem: center);
+
+                    li {
+                        margin-left: 30px;
+                    }
+                }
+                @media (max-width: 767px) {
+                    display: none;
+                }
+            }
+        }
+        .s-bottom {
+            @include displayFlex($justify: between, $alignItem: center);
+            .s__listIcon {
+                ul {
+                    @include displayFlex($justify: between, $alignItem: center);
+                    li {
+                        margin-left: 30px;
+                    }
+                }
+            }
+            span {
+                color: $primary-color;
+            }
+        }
+    }
+}

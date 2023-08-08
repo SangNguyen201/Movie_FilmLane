@@ -1,0 +1,31 @@
+$primary-color: #e2d703;
+$second-color: #111d1d;
+
+@mixin displayFlex($justify: none, $alignItem: none) {
+    display: flex;
+
+    @if ($justify == "center") {
+        justify-content: center;
+    }
+    @if ($justify == "between") {
+        justify-content: space-between;
+    }
+    @if ($alignItem == "center") {
+        align-items: center;
+    }
+}
+//btn ShowMore
+@mixin btnShowMore() {
+    color: #fff;
+    border: 2px solid $primary-color;
+    background-color: $primary-color;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.5s;
+    cursor: pointer;
+}

@@ -1,0 +1,25 @@
+.s-bannerMovie {
+    background: url(../assets/upcoming-bg.jpeg) center no-repeat !important;
+    padding: 100px 0;
+    .s__name {
+        color: $primary-color;
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+    .s__tittle {
+        font-size: 3rem;
+        span {
+            color: $primary-color;
+        }
+    }
+}
+//btn ShowMore
+.s__btnShow {
+    padding: 40px 0;
+    .showMore {
+        i {
+            margin-right: 5px;
+        }
+        @include btnShowMore();
+    }
+}

@@ -1,0 +1,10 @@
+#s-people {
+    text-align: center;
+    .s__rate {
+        i {
+            color: $primary-color;
+            margin-right: 5px;
+        }
+        @include displayFlex($justify: center, $alignItem: center);
+    }
+}
