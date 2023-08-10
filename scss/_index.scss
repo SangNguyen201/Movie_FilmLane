@@ -221,12 +221,15 @@ header {
             }
             .s__item {
                 min-width: 20%;
+                @media (max-width: 575px) {
+                    min-width: 30%;
+                }
             }
         }
         .s__item {
             width: calc(20% - 20px);
             @media (max-width: 575px) {
-                width: calc(25% - 20px);
+                width: calc(33% - 20px);
             }
             .s__thump {
                 position: relative;

@@ -63,7 +63,7 @@ async function getData(apiLink) {
 }
 function renderListMovie(dataWhat, selectorList) {
     dataWhat.results.forEach((item) => {
-        selectorList.innerHTML += `<a href='detailMovie.html?id=${item.id}' class="s__item">
+        selectorList.innerHTML += `<a href='detailMovie.html?id=${item.id}&type=${item.title ? "movie" : "tv"}' class="s__item">
             <div class="s__thump">
                 <img src="https://image.tmdb.org/t/p/w300${item.poster_path}" alt="" />
             </div>

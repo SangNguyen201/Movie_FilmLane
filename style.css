@@ -292,17 +292,12 @@ header .s-nav .hiddenMenu {
 .s-gallery .s__listMovie.scroll .s__item {
   min-width: 20%;
 }
-@media (max-width: 575px) {
-  .s-gallery .s__listMovie.scroll .s__item {
-    min-width: 30%;
-  }
-}
 .s-gallery .s__listMovie .s__item {
   width: calc(20% - 20px);
 }
 @media (max-width: 575px) {
   .s-gallery .s__listMovie .s__item {
-    width: calc(33% - 20px);
+    width: calc(50% - 20px);
   }
 }
 .s-gallery .s__listMovie .s__item .s__thump {
@@ -602,8 +597,8 @@ footer .s-footerlast .s-bottom span {
 }
 @media (max-width: 767px) {
   .s-popupVideo .s__video {
-    width: 350px;
-    height: 200px;
+    width: 500px;
+    height: 300px;
   }
 }
 .s-popupVideo .s__inner {

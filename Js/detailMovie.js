@@ -1,7 +1,8 @@
 const url = new URL(window.location.href);
 const urlId = url.searchParams.get("id");
+const urlType = url.searchParams.get("type");
 async function detailMovies() {
-    let promise = await fetch(`https://api.themoviedb.org/3/movie/${urlId}?api_key=${API_KEY}`);
+    let promise = await fetch(`https://api.themoviedb.org/3/${urlType}/${urlId}?api_key=${API_KEY}`);
     let data = await promise.json();
     const wrapper = document.querySelector(".s-wrapper");
     const background = document.querySelector("#s-detailMovie");
@@ -11,14 +12,14 @@ async function detailMovies() {
     <img src="https://image.tmdb.org/t/p/w300${data.poster_path}" alt="" />
     </div>
     <div class="s__inforFilm">
-    <h3>${data.title}</h3>
-    <p class="s__date">Date :${data.release_date}</p>
+    <h3>${data.name ? data.name : data.title}</h3>
+    <p class="s__date">Date :${data.first_air_date ? data.first_air_date : data.release_date}</p>
     <p class="s__moviegenre">Movie genre : </p>
-    <p class="s__time">Time : <i class="fa-regular fa-clock"></i> <span>${data.runtime} min</span></p>
+    <p class="s__time">Time : <i class="fa-regular fa-clock"></i> <span>${data.number_of_episodes ? data.number_of_episodes + " esp" : data.runtime + "min"} </span></p>
     <div class="s__rate">
         <p class="s__round">${data.vote_average}%</p>
         <p>user score</p>
-        <button onclick="openPopup()" class="btn_popup">
+        <button style="display: ${urlType == "tv" ? "none" : ""}" onclick="openPopup()" class="btn_popup">
             <i class="fa-solid fa-play"></i>
             Play Trailer
         </button>
@@ -38,17 +39,18 @@ async function openPopup() {
     let promise = await fetch(`https://api.themoviedb.org/3/movie/${urlId}/videos?api_key=${API_KEY}`);
     let data = await promise.json();
     let trailer = data.results.find((item) => item.type == "Trailer");
+    console.log("trailer: ", trailer);
     trailerVideo.innerHTML = `
-    <iframe
-    width="100%"
-    height="100%"
-    src="https://www.youtube.com/embed/${trailer.key}"
-    title='Phim "The Flash" Trailer 2 | Dự Kiến Khởi Chiếu 15.06.2023'
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    ></iframe>;
-    `;
+            <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/${trailer.key}"
+            title='Phim "The Flash" Trailer 2 | Dự Kiến Khởi Chiếu 15.06.2023'
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            ></iframe>;
+            `;
 }
 
 const closeVideo = document.querySelector(".loseTrailer");
@@ -62,10 +64,11 @@ popupVideo.addEventListener("click", () => {
     trailerVideo.innerHTML = "";
 });
 async function actorMovie() {
-    let promise = await fetch(`https://api.themoviedb.org/3/movie/${urlId}/credits?api_key=${API_KEY}`);
-    let data = await promise.json();
+    let promise = await fetch(`https://api.themoviedb.org/3/${urlType}/${urlId}/credits?api_key=${API_KEY}`);
+    let getData = await promise.json();
+    console.log(getData);
     const actorMovie = document.querySelector("#actorMovie");
-    data.cast.forEach((item, index) => {
+    getData.cast.forEach((item) => {
         actorMovie.innerHTML += `
             <a href="detailActor.html?actorId=${item.id}" class="s__item" >
                 <div class="s__thump">
@@ -78,7 +81,7 @@ async function actorMovie() {
     });
 }
 async function reviewMovie() {
-    let promise = await fetch(`https://api.themoviedb.org/3/movie/${urlId}/reviews?api_key=${API_KEY}`);
+    let promise = await fetch(`https://api.themoviedb.org/3/${urlType}/${urlId}/reviews?api_key=${API_KEY}`);
     let data = await promise.json();
     let renderReview = document.querySelector(".s__wrapperReviewer");
     data.results.forEach((item) => {
