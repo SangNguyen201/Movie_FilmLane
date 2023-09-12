@@ -53,7 +53,7 @@ async function renderFilm() {
         wrapper.innerHTML += `
         <div class="s__card">
         <div class="s__list">
-            <a href="detailMovie.html?id=${item.id}">
+            <a href="detailMovie.html?id=${item.id}&type=movie">
                 <img src="https://image.tmdb.org/t/p/w300${item.poster_path}" alt="" />
                 <h3>${item.title}</h3>
                 <p>${item.release_date}</p>
