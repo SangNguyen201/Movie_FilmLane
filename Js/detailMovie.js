@@ -89,10 +89,10 @@ async function reviewMovie() {
         <div class="s__itemReviewer">
         <div class="s__thump"><img src="${item.author_details.avatar_path ? `https://image.tmdb.org/t/p/w300${item.author_details.avatar_path}` : `assets/avatar.jpg`}"  alt="" /></div>
         <div class="s__content">
-            <h3>${item.author}</h3>
+            <p>${item.author}</p>
             <p>Written by mooney ${item.created_at}</p>
             <span class="spanRemove">
-                ${item.content}
+            ${item.content.substring(0, 10)}${item.content.length > 10 ? "..." : ""}
             </span>
             <span class="spanAdd" onclick="showMoreContent(event)">
                 Show more...

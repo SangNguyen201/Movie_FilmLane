@@ -14,9 +14,14 @@
             @media (max-width: 767px) {
                 width: 100%;
             }
+            @media (max-width: 575px) {
+                width: 300px;
+                margin: 0 auto;
+            }
         }
         .s__inforFilm {
             width: 70% !important;
+            margin: 0 auto;
             h3 {
                 margin-bottom: 10px;
             }
@@ -107,7 +112,6 @@
         .s__itemReviewer {
             @include displayFlex($justify: center, $alignItem: center);
             width: calc(50% - 10px);
-            padding: 20px;
             margin-bottom: 10px;
             background-color: #ffffff0a;
             border-radius: 10px;
@@ -115,7 +119,7 @@
                 margin: 10px 0;
             }
             img {
-                width: 120px;
+                width: 100px;
                 margin-right: 10px;
                 border-radius: 10px;
             }

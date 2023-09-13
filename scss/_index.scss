@@ -57,9 +57,6 @@ header {
     }
     .s-nav {
         @include displayFlex($justify: between, $alignItem: center);
-        @media (max-width: 767px) {
-            @include displayFlex($justify: center !important, $alignItem: center);
-        }
         .s__listmenu {
             @media (max-width: 767px) {
                 display: none;
@@ -168,6 +165,9 @@ header {
         color: $primary-color;
         font-size: 1.3rem;
         font-weight: bold;
+        @media (max-width: 575px) {
+            margin-bottom: 5px;
+        }
     }
     .s__tittle {
         margin: 30px 0;
@@ -176,9 +176,15 @@ header {
         span {
             color: $primary-color;
         }
-        @media (max-width: 991px) {
+        @media (max-width: 992px) {
             width: 100%;
             margin: 10px 0;
+            font-size: 2rem;
+        }
+        @media (max-width: 575px) {
+            width: 70%;
+            margin: 0 auto;
+            font-size: 1.5rem;
         }
     }
     .s__hook {
@@ -191,13 +197,16 @@ header {
         border-radius: 50px;
         transition: 0.5s;
         cursor: pointer;
+        @media (max-width: 575px) {
+            margin-top: 20px;
+        }
     }
 }
 
 .s-gallery {
     background: url(../assets/nowplaying-bg.png) center no-repeat;
     background-size: cover;
-    padding: 50px 0;
+    padding: 10px 0;
     .s__listMovie {
         @include displayFlex($justify: none, $alignItem: none);
         gap: 20px;
